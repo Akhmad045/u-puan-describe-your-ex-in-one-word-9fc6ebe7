@@ -11,10 +11,13 @@ WORD = "Typo"
 
 
 def main() -> None:
+    word = WORD.strip()
+    if not word or len(word) > 111 or len(word.split()) != 1:
+        raise ValueError("entry must be exactly one word of 1-111 characters")
     out_path = "/output/entry.txt"
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(WORD)
+        f.write(word)
 
 
 if __name__ == "__main__":
